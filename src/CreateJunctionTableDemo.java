@@ -23,9 +23,9 @@ public class CreateJunctionTableDemo {
             Department d = new Department();
             e.setName("Jeff");
             d.setDepartment_name("Human Resource");
-            Department_Employee de = new Department_Employee();
-            de.setEmployee(e);
-            de.setDepartment(d);
+            Department_Employee de = new Department_Employee(e,d);
+            // de.setEmployee(e);
+            // de.setDepartment(d);
             session.beginTransaction();
             System.out.println("Saving " + de);
             session.save(de);
