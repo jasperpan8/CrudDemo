@@ -10,14 +10,18 @@ import org.hibernate.cfg.Configuration;
 
 public class CreateEmployeeDemo {
     public static void main(String[] args) {
+        
+        //create session factory
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
                 .addAnnotatedClass(Department.class)
                 .addAnnotatedClass(Department_Employee.class)
                 .buildSessionFactory();
-
+        
+        //create session
         Session session = factory.getCurrentSession();
+        
         try{
             // create object
             Employee employee = new Employee();
