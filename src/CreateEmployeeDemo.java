@@ -19,13 +19,21 @@ public class CreateEmployeeDemo {
 
         Session session = factory.getCurrentSession();
         try{
+            // create object
             Employee employee = new Employee();
             employee.setName("Kai");
+            
+            // start a transaction
             session.beginTransaction();
             System.out.println("Saving Employee" + employee);
+            
+            //save the employee
             session.save(employee);
+            
+            // commit transaction
             session.getTransaction().commit();
             System.out.println("Done");
+            
         }finally{
             session.close();
             factory.close();
