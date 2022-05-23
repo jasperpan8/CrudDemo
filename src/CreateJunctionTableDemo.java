@@ -19,16 +19,25 @@ public class CreateJunctionTableDemo {
         Session session = factory.getCurrentSession();
 
         try{
+            // create Employee Object and Department Object
             Employee e = new Employee();
             Department d = new Department();
             e.setName("Jeff");
             d.setDepartment_name("Human Resource");
+            
+            // put the employee and department into Department_Employee class object
             Department_Employee de = new Department_Employee(e,d);
             // de.setEmployee(e);
             // de.setDepartment(d);
+            
+            // start a transaction
             session.beginTransaction();
             System.out.println("Saving " + de);
+            
+            // save Department_Employee Object
             session.save(de);
+            
+            // commit transaction
             session.getTransaction().commit();
             System.out.println("Done");
         }finally {
